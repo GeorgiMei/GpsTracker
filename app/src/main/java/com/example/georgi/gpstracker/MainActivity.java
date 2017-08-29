@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
@@ -68,6 +69,9 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng pos2 = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
             trackOptions.add(pos1);
             trackOptions.add(pos2);
+            TextView altitude = (TextView)findViewById(R.id.textViewAltitude);
+            altitude.setText(String.valueOf(mLastLocation.getAltitude()));
+
             mMap.addPolyline(trackOptions);
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pos2));
         }
